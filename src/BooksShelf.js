@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import sortBy from 'sort-by'
 import Book from './Book'
+import PropTypes from 'prop-types'
 
 class BooksShelf extends Component {
-  
+
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    books: PropTypes.arrayOf(PropTypes.object),
+    onBookChangeShelf: PropTypes.func.isRequired
+  };
+
   state = {
     sortBy: 'title'
-  }
+  };
   
   render() {
     
@@ -21,7 +28,10 @@ class BooksShelf extends Component {
           <ol className="books-grid">
             {books.map((book) => (
               <li key={book.id}>
-                <Book book={book} />
+                <Book
+                  book={book}
+                  onBookChangeShelf={(shelf) => onBookChangeShelf(book, shelf)}
+                />
               </li>
             ))}
           </ol>
