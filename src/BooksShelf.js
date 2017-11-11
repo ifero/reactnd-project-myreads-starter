@@ -30,7 +30,7 @@ class BooksShelf extends Component {
               <li key={book.id}>
                 <Book
                   book={book}
-                  onBookChangeShelf={(shelf) => onBookChangeShelf(book, shelf)}
+                  onBookChangeShelf={(shelf) => onBookChangeShelf({id : book.id}, shelf)}
                 />
               </li>
             ))}
